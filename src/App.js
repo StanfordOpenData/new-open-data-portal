@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.scss';
+import { Switch, HashRouter, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavBar from './components/NavBar';
+import LandingPage from './components/LandingPage';
+import About from './components/About';
+import Contribute from './components/Contribute';
+import Footer from './components/Footer';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <HashRouter>
+          <div>
+            <NavBar/>
+            <Switch>
+              <Route exact path='/' component={ LandingPage }/>
+              <Route exact path='/aboutus' component={About}/>
+              <Route exact path='/contribute' component={Contribute}/>
+            </Switch>
+          </div>
+        </HashRouter>
+        <Footer/>
+      </div>
+    );
+  }
 }
 
 export default App;
